@@ -1,6 +1,75 @@
-<h1>
-     Sign in
-</h1>
+<header>
+ <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+     <logo>
+         <a class="logo navbar-brand waves-light" mdbRippleRadius href="#"><strong>JJ</strong></a>
+     </logo>
+     <links>
+         <ul class="navbar-nav mr-auto">
+             <li class="nav-item active waves-light" mdbRippleRadius>
+                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+             </li>
+             <li class="nav-item waves-light" mdbRippleRadius>
+                 <a class="nav-link" href="#">Link</a>
+             </li>
+         </ul>
+     </links>
+ </mdb-navbar>
 
-<button (click)="socialSignIn('facebook')">Sign in with Facebook</button>
-<button (click)="socialSignIn('google')">Signin in with Google</button>
+ <section class="view intro-2 hm-gradient">
+  <div class="full-bg-img">
+    <div class="container flex-center">
+      <div class="d-flex align-items-center content-height">
+        <div class="row flex-center pt-5 mt-3">
+          <div class="col-md-6 text-center text-md-left mb-5">
+            <div class="white-text">
+                <h1 class="h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up right now! </h1>
+                <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+                <h6 class="wow fadeInLeft" data-wow-delay="0.3s">You can sign up or sign in with your google or facebook account.</h6>
+                <br>
+                <a class="btn btn-outline-white wow fadeInLeft waves-light" data-wow-delay="0.3s" mdbRippleRadius>Learn more</a>
+            </div>
+          </div>
+            
+          <div class="col-md-6 col-xl-5 offset-xl-1">
+            <div class="card wow fadeInRight" data-wow-delay="0.3s">
+             <div class="card-body">
+               <div class="text-center">
+                   <h3 class="white-text"><i class="fa fa-user white-text"></i> Register:</h3>
+                   <hr class="hr-light">
+               </div>
+
+               <div class="md-form">
+                   <i class="fa fa-user prefix white-text"></i>
+                   <input type="text" id="form3" class="form-control" mdbActive>
+                   <label for="form3">Your name</label>
+               </div>
+               <div class="md-form">
+                   <i class="fa fa-envelope prefix white-text"></i>
+                   <input type="text" id="form2" class="form-control" mdbActive>
+                   <label for="form2">Your email</label>
+               </div>
+
+               <div class="md-form">
+                   <i class="fa fa-lock prefix white-text"></i>
+                   <input type="password" id="form4" class="form-control" mdbActive>
+                   <label for="form4">Your password</label>
+               </div>
+
+               <div class="text-center">
+                 <button class="btn btn-block btn-default waves-light" mdbRippleRadius>Sign up</button>
+                 <button class="btn btn-block btn-danger waves-light" mdbRippleRadius (click)="socialSignIn('google')"><i class="fa fa-google"></i>Sign in with Google</button>
+                 <button class="btn btn-block btn-indigo waves-light" (click)="socialSignIn('facebook')"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
+                 <hr class="hr-light mb-3 mt-4">
+               </div>
+               
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+ </section>
+
+</header>
+<!--Main Navigation-->
