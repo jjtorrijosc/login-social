@@ -1,2 +1,44 @@
-<router-outlet></router-outlet>
+<header>
+ <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+     <logo>
+         <a class="logo navbar-brand waves-light" mdbRippleRadius href="#"><strong>JJ</strong></a>
+     </logo>
+     <links>
+         <ul class="navbar-nav mr-auto">
+             <li class="nav-item active waves-light" mdbRippleRadius>
+                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+             </li>
+             <li class="nav-item waves-light" mdbRippleRadius>
+                 <a class="nav-link" href="#">Link</a>
+             </li>
+         </ul>
+     </links>
+ </mdb-navbar>
+ <section class="view intro-2 hm-gradient">
+ <div class="full-bg-img">
+   <router-outlet></router-outlet>
+ </div>
+ </section>
+</header>
 
+<footer class="page-footer blue">
+  <div class="container">
+      <div class="row justify-content-center">
+         <p>Support:
+         <a href="#"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+         </p>
+      </div>
+      <div class="row justify-content-center">
+          <p>Follow us: 
+          <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+          </p>
+      </div>
+  </div>
+
+  <div class="footer-copyright">
+      <div class="container-fluid">
+          2018 <a href="https://github.com/jjtorrijosc"> Created By: jjtorri </a>
+      </div>
+ </div>
+</footer>

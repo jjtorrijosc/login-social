@@ -12,6 +12,7 @@ import {
 } from 'angular5-social-login';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -34,7 +35,8 @@ export function getAuthServiceConfigs() {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
