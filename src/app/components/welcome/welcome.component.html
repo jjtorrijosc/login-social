@@ -1,3 +1,13 @@
-<p>
-  welcome works!
-</p>
+<div class="container flex-center">
+   <div class="d-flex align-items-center content-height">
+     <div class="row flex-center pt-5 mt-3">
+		<div class="col-md-6 text-center text-md-left mb-5">
+		  <div class="white-text">
+			<h3 class="h3-light wow fadeInLeft">Welcome {{this.usuario.username}}</h3>
+			<h6 class="h6-light wow fadeInLeft">your email is: <a>{{this.usuario.email}}</a></h6>
+			<button class="btn btn-outline-white wow fadeInLeft waves-light" data-wow-delay="0.3s" mdbRippleRadius (click)="logout()">SIGNOUT</button>
+		  </div>
+		</div>
+  	</div>
+</div>
+</div>

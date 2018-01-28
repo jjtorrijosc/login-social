@@ -7,7 +7,7 @@
 	      <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
 	      <h6 class="wow fadeInLeft" data-wow-delay="0.3s">You can sign up or sign in with your google or facebook account.</h6>
 	      <br>
-	      <button class="btn btn-outline-white wow fadeInLeft waves-light" data-wow-delay="0.3s" (click)="basicModal.show()" mdbRippleRadius>REAR MORE</button>
+	      <button class="btn btn-outline-white wow fadeInLeft waves-light" data-wow-delay="0.3s" (click)="basicModal.show()" mdbRippleRadius>READ MORE</button>
 	  </div>
 	</div>
 	  
@@ -21,23 +21,23 @@
 	
 	     <div class="md-form">
 	         <i class="fa fa-user prefix white-text"></i>
-	         <input type="text" id="form3" class="form-control" mdbActive>
+	         <input type="text" id="form3" class="form-control" mdbActive [(ngModel)]="this.usuario.username">
 	         <label for="form3">Your name</label>
 	     </div>
 	     <div class="md-form">
 	         <i class="fa fa-envelope prefix white-text"></i>
-	         <input type="text" id="form2" class="form-control" mdbActive>
+	         <input type="text" id="form2" class="form-control" mdbActive [(ngModel)]="this.usuario.email">
 	         <label for="form2">Your email</label>
 	     </div>
 	
 	     <div class="md-form">
 	         <i class="fa fa-lock prefix white-text"></i>
-	         <input type="password" id="form4" class="form-control" mdbActive>
+	         <input type="password" id="form4" class="form-control" mdbActive [(ngModel)]="this.usuario.password">
 	         <label for="form4">Your password</label>
 	     </div>
 	
 	     <div class="text-center">
-	       <button class="btn btn-block btn-default waves-light">Sign up</button>
+	       <button class="btn btn-block btn-default waves-light" (click)="signup()">Sign up</button>
 	       <button class="btn btn-block btn-danger waves-light" (click)="socialSignIn('google')"><i class="fa fa-google"></i>Sign in with Google</button>
 	       <button class="btn btn-block btn-indigo waves-light" (click)="socialSignIn('facebook')"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
 	       <hr class="hr-light mb-3 mt-4">

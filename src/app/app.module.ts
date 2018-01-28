@@ -14,6 +14,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 
+import { UsersService } from './services/users.service';
+
 // Configs
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -48,7 +50,7 @@ export function getAuthServiceConfigs() {
   providers: [{
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
-    }],
+    }, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
