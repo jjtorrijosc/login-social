@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { User} from '../model/user';
 
@@ -23,8 +24,8 @@ export class UsersService {
       this.usuario = null;
   }
   
-  getUser (): User {
-      return this.usuario;
+  getUser (): Observable<User> {
+      return Observable.create(this.usuario);
   }
   
   signup (usuario: User) {

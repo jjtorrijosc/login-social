@@ -16,7 +16,9 @@ export class WelcomeComponent implements OnInit {
           private router: Router) { }
 
   ngOnInit() {
-      this.usuario = this.usersService.getUser();
+      this.usersService.getUser().subscribe(
+          data => {this.usuario = data;}
+      );
   }
   
   logout () {
