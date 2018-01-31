@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
@@ -15,6 +16,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 
 import { UsersService } from './services/users.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -22,11 +24,11 @@ export function getAuthServiceConfigs() {
       [
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider('facebook-app-id')
+          provider: new FacebookLoginProvider('facebook_app_id')
         },
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider('google-dev-ip')
+          provider: new GoogleLoginProvider('google_auth_id')
         }
       ]
   );
@@ -38,10 +40,12 @@ export function getAuthServiceConfigs() {
   declarations: [
     AppComponent,
     LoginComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     SocialLoginModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot()

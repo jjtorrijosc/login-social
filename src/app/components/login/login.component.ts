@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
     AuthService,
@@ -17,16 +18,18 @@ import { UsersService } from '../../services/users.service';
 })
 export class LoginComponent implements OnInit {
 
-    usuario: User;
+  usuario: User;
     
   constructor( 
           private socialAuthService: AuthService,
           private usersService: UsersService,
           private router: Router
-          ) { }
+          ) { 
+      
+  }
 
   ngOnInit() {
-      this.usuario = new User;
+      this.usuario = new User()
   }
 
   public socialSignIn(socialPlatform: string) {
@@ -41,19 +44,20 @@ export class LoginComponent implements OnInit {
         (userData) => {
           console.log(socialPlatform + ' sign in data : ', userData);
           // Now sign-in with userData
-          let auxUser: User;
+          var auxUser: User = new User();
           auxUser.username = userData.name;
           auxUser.email = userData.email;
           auxUser.provider = userData.provider;
           auxUser.id_provider = userData.id;
           
-          this.usersService.loginSocial(auxUser);
+          this.usersService.login(auxUser);
           this.router.navigate(['./welcome']);
         }
       );
     }
   
   public signup () {
+      console.log("signup: "+this.usuario.username);
       this.usersService.signup(this.usuario);
       this.router.navigate(['./welcome']);
   }
