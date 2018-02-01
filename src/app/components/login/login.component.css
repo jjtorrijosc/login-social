@@ -9,6 +9,15 @@
 .md-form label {
     color: #ffffff;
 }
+
+.md-form .active {
+    color: #ffffff;
+}
+
+.md-form .form-control {
+    color: #ffffff;
+}
+
 h6 {
     line-height: 1.7;
 }
