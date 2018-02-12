@@ -21,6 +21,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 // Configs
 export function getAuthServiceConfigs() {
+    
+    //cargamos las api keys
   const config = new AuthServiceConfig(
       [
         {
