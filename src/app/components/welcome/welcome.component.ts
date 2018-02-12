@@ -47,7 +47,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   }
   
   timerLoginTimeout () {
-      var logoutTimer =       
+      //var logoutTimer =       
   }
   
   
