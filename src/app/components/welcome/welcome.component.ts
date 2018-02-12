@@ -2,8 +2,6 @@ import { Component, OnInit, OnDestroy  } from '@angular/core';
 //import { Subscription } from "rxjs/Subscription";
 import { Subscription } from "rxjs/Subscription";
 import { Router } from '@angular/router';
-import { CountdownTimer } form 
-
 
 import { UsersService } from '../../services/users.service';
 import { User} from '../../model/user';
@@ -17,8 +15,6 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   
     usuario: User;
     private subscrUser: Subscription;
-    private loginTimeout: number;
-    private timer: CountdownTimer;
 
   constructor(private usersService: UsersService,
           private router: Router) { }
@@ -32,7 +28,6 @@ export class WelcomeComponent implements OnInit, OnDestroy {
               console.log('subscribe: '+usuario.username);
               this.usuario = usuario;}
       );
-      this.loginTimeout = 60;
   }
   
   ngOnDestroy() {
@@ -44,11 +39,6 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   logout () {
       this.usersService.logout();
       this.router.navigate(['./login']);
-  }
-  
-  timerLoginTimeout () {
-      //var logoutTimer =       
-  }
-  
+  }  
   
 }
