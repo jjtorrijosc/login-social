@@ -5,6 +5,9 @@
 		  <div class="white-text">
 			<h3 class="h3-light wow fadeInLeft">Welcome {{this.usuario.username}}</h3>
 			<h6 class="h6-light wow fadeInLeft">your email is: <a>{{this.usuario.email}}</a></h6>
+			<div class="row"> 
+				<countdown timer="this.timer" radius="15" stroke="5"></countdown>
+			</div>
 			<button class="btn btn-outline-white wow fadeInLeft waves-light" data-wow-delay="0.3s" mdbRippleRadius (click)="logout()">SIGNOUT</button>
 		  </div>
 		</div>

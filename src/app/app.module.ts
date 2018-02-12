@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../environments/environment';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
@@ -24,11 +25,11 @@ export function getAuthServiceConfigs() {
       [
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider('facebook_app_id')
+          provider: new FacebookLoginProvider(environment.API_KEY_FACEBOOK)
         },
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider('google_auth_id')
+          provider: new GoogleLoginProvider(environment.API_KEY_GOOGLE)
         }
       ]
   );
