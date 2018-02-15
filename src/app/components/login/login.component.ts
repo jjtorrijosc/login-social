@@ -61,8 +61,17 @@ export class LoginComponent implements OnInit {
   public signup () {
       this.loadingService.loading();
       console.log("signup: "+this.usuario.username);
-      this.usersService.signup(this.usuario);
-      this.router.navigate(['./welcome']);
+      this.usersService.signup(this.usuario).subscribe(
+         (user: User) => {
+             console.log('signup respuesta: ');
+             this.loadingService.stopLoading();
+         },
+         error => {
+             console.log('error signup');
+             this.loadingService.stopLoading();
+         }
+       );
+      
   }
   
 }
