@@ -9,6 +9,7 @@ import {
 
 import { User } from '../../model/user';
 import { UsersService } from '../../services/users.service';
+import { LoadingService } from '../../services/loading.service';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   constructor( 
           private socialAuthService: AuthService,
           private usersService: UsersService,
+          private loadingService: LoadingService,
           private router: Router
           ) { 
       
@@ -57,6 +59,7 @@ export class LoginComponent implements OnInit {
     }
   
   public signup () {
+      this.loadingService.loading();
       console.log("signup: "+this.usuario.username);
       this.usersService.signup(this.usuario);
       this.router.navigate(['./welcome']);

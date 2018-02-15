@@ -17,6 +17,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 
 import { UsersService } from './services/users.service';
+import { LoadingService } from './services/loading.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 // Configs
@@ -57,7 +58,10 @@ export function getAuthServiceConfigs() {
   providers: [{
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
-    }, UsersService],
-  bootstrap: [AppComponent]
-})
+     }, 
+     UsersService,
+     LoadingService
+    ],
+    bootstrap: [AppComponent]
+  })
 export class AppModule { }

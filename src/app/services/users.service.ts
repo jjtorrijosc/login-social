@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from "rxjs/Subject";
-//import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+import { catchError, map, tap } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
+import { environment } from '../../environments/environment';
 
 import { User} from '../model/user';
 
@@ -16,6 +20,8 @@ export class UsersService {
   }
     
   login (usuario: User) {
+      //TODO: validar contraBD
+      
       this.usuario = usuario;
       console.log("login: "+usuario.username);
       this.$obUsuario.next(usuario);
