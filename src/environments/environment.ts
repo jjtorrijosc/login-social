@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  urlBackend: 'http://localhost:8080',
   API_KEY_GOOGLE: 'your_google_auth_id',
   API_KEY_FACEBOOK: 'your_facebook_app_id'
 };
