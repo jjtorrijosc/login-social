@@ -24,8 +24,10 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       //dejamos un subscribe por si el usuario cambia
       this.subscrUser = this.usersService.$obUsuario.subscribe(
           (usuario: User) => {
-              console.log('subscribe: '+usuario.username);
-              this.usuario = usuario;}
+              if (usuario != null) {
+                  console.log('subscribe: '+usuario.username);
+                  this.usuario = usuario;}
+          }
       );
   }
   

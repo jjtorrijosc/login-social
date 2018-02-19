@@ -50,24 +50,52 @@ export class LoginComponent implements OnInit {
           auxUser.username = userData.name;
           auxUser.email = userData.email;
           auxUser.provider = userData.provider;
-          auxUser.id_provider = userData.id;
+          auxUser.idProvider = userData.id;
           
-          this.usersService.login(auxUser);
-          this.router.navigate(['./welcome']);
+          this.loadingService.loading();
+          this.usersService.login(auxUser).subscribe(
+              (data: User) => {
+                  console.log('socialSignIn respuesta: '+data.userId);
+                  this.loadingService.stopLoading();    
+                  this.router.navigate(['./welcome']);
+              },
+              error => {
+                  console.log('error socialSignIn: '+error.error);
+                  this.loadingService.stopLoading();
+              }
+          );
+          
         }
       );
     }
+  
+  public login () {
+      this.loadingService.loading();
+      console.log("login normal: "+this.usuario.email);
+      this.usersService.login(this.usuario).subscribe(
+          (data: User) => {
+              console.log('login normal respuesta: '+data.userId);
+              this.loadingService.stopLoading();    
+              this.router.navigate(['./welcome']);
+          },
+          error => {
+              console.log('error login normal: '+error.error);
+              this.loadingService.stopLoading();
+          }
+      );
+  }
   
   public signup () {
       this.loadingService.loading();
       console.log("signup: "+this.usuario.username);
       this.usersService.signup(this.usuario).subscribe(
-         (user: User) => {
-             console.log('signup respuesta: ');
+         (data: User) => {
+             console.log('signup respuesta: '+data.userId);
              this.loadingService.stopLoading();
+             this.router.navigate(['./welcome']);
          },
          error => {
-             console.log('error signup');
+             console.log('error signup '+error.error);
              this.loadingService.stopLoading();
          }
        );

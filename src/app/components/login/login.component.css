@@ -2,19 +2,19 @@
     background-color: rgba(229, 228, 255, 0.2);
 }
 
- .md-form .prefix {
+ .md-form-white .prefix {
     font-size: 1.5rem;
     margin-top: 1rem;
 }
-.md-form label {
+.md-form-white label {
     color: #ffffff;
 }
 
-.md-form .active {
+.md-form-white .active {
     color: #ffffff;
 }
 
-.md-form .form-control {
+.md-form-white .form-control {
     color: #ffffff;
 }
 

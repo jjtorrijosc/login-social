@@ -28,19 +28,23 @@ export class UsersService {
   }
     
   login (usuario: User): Observable<User> {
-      return this.http.post<User>( environment.urlBackend +  loginUrl,
+      return this.http.post<User>(environment.urlBackend +  loginUrl,
               JSON.stringify(usuario),
               httpOptions
        ).pipe(
-           map (
-             (userLogin: User) => {
+          //interceptamos la respuesta
+          tap (
+             (data: User) => {
                //desde el servicio actualizamos el usuario para toda la app
-                 console.log('login subscribe '+userLogin.username);
-                 this.usuario = userLogin;
-                 this.$obUsuario.next(userLogin); 
+                 console.log('login subscribe '+data.userId);
+                 this.usuario = data;
+                 this.$obUsuario.next(data);
+             },
+             err => {
+                 console.error(err);
              }
-           ),
-           catchError(this.handleError('login', null))
+          )//, 
+          //catchError(this.handleError("login", null))
        );
   }
       
@@ -56,18 +60,23 @@ export class UsersService {
               JSON.stringify(usuario),
               httpOptions
        ).pipe(
-         map(
-          (userSignup: User) => {
+         //interceptamos la respuesta
+         tap(
+          (data: User) => {
               //una vez dado de alta hacemos login con el nuevo usuario
-             this.login(userSignup).subscribe(
-                 (newUserLogin: User) => {
-                     console.log('new User signup and logged: '+newUserLogin.username);
+              console.log('vamos a hacer login');
+              this.usuario = data;
+             this.login(data).subscribe(
+                 (userLogin: User) => {
+                     console.log('new User signup and logged: '+userLogin.userId);
                  }
              );
-             console.log("signup: "+usuario.username);
+             console.log("signup: "+data.userId);
+          },
+          err => {
+              console.error(err);
           }
-         ),
-         catchError(this.handleError('login', null))
+         )
        );
   }
   
@@ -77,8 +86,9 @@ export class UsersService {
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
-      return (error: any): Observable<T> => {
+      (error: any): Observable<T> => {
         console.error(error);
+        
         // devolvemos resultado vacio
         return of(result as T);
       };
