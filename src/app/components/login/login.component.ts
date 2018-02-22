@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
@@ -18,8 +18,18 @@ import { LoadingService } from '../../services/loading.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    
+    usuario: User;
+    
 
-  usuario: User;
+    @ViewChild("formModal") public formModal;
+    mensajeErrorSignUp: string;
+    @ViewChild("popSignUp") public popSignUp;
+    mensajeErrorLogin: string;
+    @ViewChild("popLogin") public popLogin;
+    
+    
+    
     
   constructor( 
           private socialAuthService: AuthService,
@@ -61,7 +71,16 @@ export class LoginComponent implements OnInit {
               },
               error => {
                   console.log('error socialSignIn: '+error.error);
+                  this.mensajeErrorSignUp = error.error;
                   this.loadingService.stopLoading();
+                  
+                  setTimeout(() => {
+                      this.popSignUp.show();
+                  }, 500);
+                  
+                  setTimeout(() => {
+                      this.popSignUp.hide();
+                  }, 5500);
               }
           );
           
@@ -75,12 +94,24 @@ export class LoginComponent implements OnInit {
       this.usersService.login(this.usuario).subscribe(
           (data: User) => {
               console.log('login normal respuesta: '+data.userId);
-              this.loadingService.stopLoading();    
+              this.formModal.hide();
+              this.loadingService.stopLoading();
               this.router.navigate(['./welcome']);
           },
           error => {
               console.log('error login normal: '+error.error);
               this.loadingService.stopLoading();
+              this.mensajeErrorLogin = error.error;
+              
+              //metemos un ligero retardo para que se actualice el contenido
+              //del tooltip
+              setTimeout(() => {
+                  this.popLogin.show();
+              }, 500);
+              
+              setTimeout(() => {
+                  this.popLogin.hide();
+              }, 5500);
           }
       );
   }
@@ -96,7 +127,17 @@ export class LoginComponent implements OnInit {
          },
          error => {
              console.log('error signup '+error.error);
+             this.mensajeErrorSignUp = error.error;
              this.loadingService.stopLoading();
+             
+             setTimeout(() => {
+                 this.popSignUp.show();
+             }, 500);
+             
+             setTimeout(() => {
+                 this.popSignUp.hide();
+             }, 5500);
+             
          }
        );
       
