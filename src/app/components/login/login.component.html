@@ -14,8 +14,8 @@
 	<div class="col-md-6 col-xl-5 offset-xl-1">
 	  <div class="card wow fadeInRight" data-wow-delay="0.3s">
 	   <div class="card-body">
-	     <div class="text-center">
-	         <h3 class="white-text">
+	     <div class="text-center ">
+	         <h3 class="white-text error-tip">
 	         	<i #popSignUp="bs-mdbPopover" [mdbPopover]="this.mensajeErrorSignUp" triggers="" placement="bottom" 
 	         			class="fa fa-user white-text"></i>
 	         	 Register:
@@ -81,7 +81,7 @@
 			         <label for="formLogPass">Your password</label>
 			     </div>
 				
-				<div class="text-center mt-2">
+				<div class="text-center mt-2 error-tip">
 					<button class="btn btn-info waves-light" #popLogin="bs-mdbPopover" [mdbPopover]="this.mensajeErrorLogin" triggers=""
                     	 mdbRippleRadius (click)="this.login();" >Log in <i class="fa fa-sign-in ml-1"></i></button>
                 </div>

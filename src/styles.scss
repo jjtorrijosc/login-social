@@ -1,2 +1,39 @@
 
- 
+
+@mixin claseToolTip ($tip-background-color, $tip-text-color) {
+
+	.popover {
+		background-color: $tip-background-color;
+		opacity: 0.9;
+	}
+	
+	.popover .popover-body{
+		color: $tip-text-color;
+	}
+	.popover.popover-bottom::after, .popover.bs-tether-element-attached-top::after {
+		border-bottom-color: $tip-background-color;
+	}
+	
+	.popover.popover-top::after, .popover.bs-tether-element-attached-bottom::after {
+		border-top-color: $tip-background-color;
+	}
+	
+	.popover.popover-right::after, .popover.bs-tether-element-attached-left::after {
+		border-right-color: $tip-background-color;
+	}
+	
+	.popover.popover-left::after, .popover.bs-tether-element-attached-right::after {
+		border-left-color: $tip-background-color;
+	}
+
+}
+
+.error-tip {
+	@include claseToolTip($tip-background-color: rgba(204, 0, 0, 0.7), $tip-text-color: white);
+}
+
+.warning-tip {
+	@include claseToolTip($tip-background-color: rgba(255, 136, 0, 0.7), $tip-text-color: white);
+}
+
+
