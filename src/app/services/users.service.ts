@@ -51,8 +51,8 @@ export class UsersService {
 
   
   logout () {
-      this.usuario = null;
-      this.$obUsuario.next(null);
+      this.usuario = new User();
+      this.$obUsuario.next(this.usuario);
   }
   
   signup (usuario: User): Observable<User> {

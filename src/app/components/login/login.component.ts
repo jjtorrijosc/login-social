@@ -1,11 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Subscription } from "rxjs/Subscription";
+
 import { Router } from '@angular/router';
 import {
     AuthService,
     FacebookLoginProvider,
     GoogleLoginProvider
 } from 'angular5-social-login';
+import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
+
 
 import { User } from '../../model/user';
 import { UsersService } from '../../services/users.service';
@@ -20,7 +24,8 @@ import { LoadingService } from '../../services/loading.service';
 export class LoginComponent implements OnInit {
     
     usuario: User;
-    
+    usuarioForm: User;
+    private navbarSubscrUser: Subscription;
 
     @ViewChild("formModal") public formModal;
     mensajeErrorSignUp: string;
@@ -35,13 +40,27 @@ export class LoginComponent implements OnInit {
           private socialAuthService: AuthService,
           private usersService: UsersService,
           private loadingService: LoadingService,
+          private _scrollToService: ScrollToService,
           private router: Router
           ) { 
       
   }
 
   ngOnInit() {
-      this.usuario = new User()
+      this.usuarioForm = new User();
+      this.usuario = this.usersService.getUser();
+      this.navbarSubscrUser = this.usersService.$obUsuario.subscribe(
+              (user: User) => {
+                  this.usuario = user;
+              },
+              (error) => {console.error('navbar onInit error: '+error);}
+          );
+  }
+  
+  ngOnDestroy() {
+      if (this.navbarSubscrUser) { 
+          this.navbarSubscrUser.unsubscribe();
+      }
   }
 
   public socialSignIn(socialPlatform: string) {
@@ -90,8 +109,8 @@ export class LoginComponent implements OnInit {
   
   public login () {
       this.loadingService.loading();
-      console.log("login normal: "+this.usuario.email);
-      this.usersService.login(this.usuario).subscribe(
+      console.log("login normal: "+this.usuarioForm.email);
+      this.usersService.login(this.usuarioForm).subscribe(
           (data: User) => {
               console.log('login normal respuesta: '+data.userId);
               this.formModal.hide();
@@ -118,8 +137,8 @@ export class LoginComponent implements OnInit {
   
   public signup () {
       this.loadingService.loading();
-      console.log("signup: "+this.usuario.username);
-      this.usersService.signup(this.usuario).subscribe(
+      console.log("signup: "+this.usuarioForm.username);
+      this.usersService.signup(this.usuarioForm).subscribe(
          (data: User) => {
              console.log('signup respuesta: '+data.userId);
              this.loadingService.stopLoading();
@@ -141,6 +160,13 @@ export class LoginComponent implements OnInit {
          }
        );
       
+  }
+  
+  scrollToCarrusel () {
+      const confScrollCarrusel: ScrollToConfigOptions = {
+              target: 'carrusel'
+      };
+      this._scrollToService.scrollTo(confScrollCarrusel);
   }
   
 }

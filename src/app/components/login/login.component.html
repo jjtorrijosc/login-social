@@ -7,11 +7,11 @@
 	      <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
 	      <h6 class="wow fadeInLeft" data-wow-delay="0.3s">You can sign up or sign in with your google or facebook account.</h6>
 	      <br>
-	      <button class="btn btn-outline-white wow fadeInLeft waves-light" data-wow-delay="0.3s" (click)="basicModal.show()" mdbRippleRadius>READ MORE</button>
+	      <button class="btn btn-outline-white wow fadeInLeft waves-light" data-wow-delay="0.3s" (click)="scrollToCarrusel()" mdbRippleRadius>READ MORE</button>
 	  </div>
 	</div>
 	  
-	<div class="col-md-6 col-xl-5 offset-xl-1">
+	<div [hidden]="this.usuario && this.usuario.email" class="col-md-6 col-xl-5 offset-xl-1">
 	  <div class="card wow fadeInRight" data-wow-delay="0.3s">
 	   <div class="card-body">
 	     <div class="text-center ">
@@ -25,18 +25,18 @@
 	
 	     <div class="md-form md-form-white">
 	         <i class="fa fa-user prefix white-text"></i>
-	         <input type="text" id="form3" class="form-control" mdbActive [(ngModel)]="usuario.username">
+	         <input type="text" id="form3" class="form-control" mdbActive [(ngModel)]="usuarioForm.username">
 	         <label for="form3">Your name</label>
 	     </div>
 	     <div class="md-form md-form-white">
 	         <i class="fa fa-envelope prefix white-text"></i>
-	         <input type="text" id="form2" class="form-control" mdbActive [(ngModel)]="usuario.email">
+	         <input type="text" id="form2" class="form-control" mdbActive [(ngModel)]="usuarioForm.email">
 	         <label for="form2">Your email</label>
 	     </div>
 	
 	     <div class="md-form md-form-white">
 	         <i class="fa fa-lock prefix white-text"></i>
-	         <input type="password" id="form4" class="form-control" mdbActive [(ngModel)]="usuario.password">
+	         <input type="password" id="form4" class="form-control" mdbActive [(ngModel)]="usuarioForm.password">
 	         <label for="form4">Your password</label>
 	     </div>
 	
@@ -71,13 +71,13 @@
             <div class="modal-body">
              	 <div class="md-form">
 			         <i class="fa fa-envelope prefix"></i>
-			         <input type="text" id="formLogEmail" class="form-control" mdbActive [(ngModel)]="usuario.email">
+			         <input type="text" id="formLogEmail" class="form-control" mdbActive [(ngModel)]="usuarioForm.email">
 			         <label for="formLogEmail">Your email</label>
 			     </div>
 			
 			     <div class="md-form">
 			         <i class="fa fa-lock prefix"></i>
-			         <input type="password" id="formLogPass" class="form-control" mdbActive [(ngModel)]="usuario.password">
+			         <input type="password" id="formLogPass" class="form-control" mdbActive [(ngModel)]="usuarioForm.password">
 			         <label for="formLogPass">Your password</label>
 			     </div>
 				

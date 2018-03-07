@@ -3,6 +3,8 @@ import { Subscription } from "rxjs/Subscription";
 import { Router } from '@angular/router';
 
 import { UsersService } from '../../services/users.service';
+import { NavbarService } from '../../services/navbar.service';
+
 import { User} from '../../model/user';
 
 @Component({
@@ -15,7 +17,9 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     usuario: User;
     private subscrUser: Subscription;
 
-  constructor(private usersService: UsersService,
+  constructor(
+          private usersService: UsersService,
+          private navbarService: NavbarService,
           private router: Router) { }
 
   ngOnInit() {
@@ -29,12 +33,15 @@ export class WelcomeComponent implements OnInit, OnDestroy {
                   this.usuario = usuario;}
           }
       );
+      
+      this.navbarService.hide();
   }
   
   ngOnDestroy() {
       if (this.subscrUser) { 
           this.subscrUser.unsubscribe();
       }
+      this.navbarService.show();
   }
   
   logout () {

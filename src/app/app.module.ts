@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 
 import { AppComponent } from './app.component';
@@ -13,13 +14,15 @@ import {
     GoogleLoginProvider,
     FacebookLoginProvider
 } from 'angular5-social-login';
+
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { UsersService } from './services/users.service';
 import { LoadingService } from './services/loading.service';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarService } from './services/navbar.service';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -54,7 +57,8 @@ export function getAuthServiceConfigs() {
     SocialLoginModule,
     AppRoutingModule,
     HttpClientModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    ScrollToModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [{
@@ -62,6 +66,7 @@ export function getAuthServiceConfigs() {
       useFactory: getAuthServiceConfigs
      }, 
      UsersService,
+     NavbarService,
      LoadingService
     ],
     bootstrap: [AppComponent]
