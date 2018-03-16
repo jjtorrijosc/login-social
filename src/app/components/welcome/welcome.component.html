@@ -1,11 +1,20 @@
-<div class="container flex-center d-flex align-items-center content-height content-width">
+<div class="container intro-2 flex-center d-flex align-items-center content-height content-width">
      <div class="row">
-		<div class="card" style="opacity: 0.9;">
-		  <div class="card-body">
+		<div class="card content-width" style="opacity: 0.9;">
+		  <div class="card-body content-width">
 			<h3 class="h3-light wow fadeInLeft">Welcome {{this.usuario.username}}</h3>
 			<h6 class="h6-light wow fadeInLeft">your email is: <a>{{this.usuario.email}}</a></h6>
 			<button class="btn btn-outline-black wow fadeInLeft waves-light" data-wow-delay="0.3s" mdbRippleRadius (click)="logout()">SIGNOUT</button>
 		  </div>
 		</div>
+  	</div>
+  	<div  *ngIf="this.sesiones && (this.sesiones.length>0)" class="row">
+  		<div *ngFor="let sesion of this.sesiones" class="col-sm-3 content-width"> 
+  			<div class="card content-width" style="opacity: 0.9;">
+		  		<div class="card-body content-width">
+		  			Session date: {{ sesion.acceso | date }}
+		  		</div>
+		  	</div>
+		 </div>
   	</div>
 </div>

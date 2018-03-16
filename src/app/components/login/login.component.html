@@ -14,7 +14,7 @@
 	<div [hidden]="this.usuario && this.usuario.email" class="col-md-6 col-xl-5 offset-xl-1">
 	  <div class="card wow fadeInRight" data-wow-delay="0.3s">
 	   <div class="card-body">
-	     <div class="text-center ">
+	     <div class="text-center">
 	         <h3 class="white-text error-tip">
 	         	<i #popSignUp="bs-mdbPopover" [mdbPopover]="this.mensajeErrorSignUp" triggers="" placement="bottom" 
 	         			class="fa fa-user white-text"></i>
@@ -23,25 +23,40 @@
 	         <hr class="hr-light">
 	     </div>
 	
-	     <div class="md-form md-form-white">
-	         <i class="fa fa-user prefix white-text"></i>
-	         <input type="text" id="form3" class="form-control" mdbActive [(ngModel)]="usuarioForm.username">
-	         <label for="form3">Your name</label>
-	     </div>
-	     <div class="md-form md-form-white">
-	         <i class="fa fa-envelope prefix white-text"></i>
-	         <input type="text" id="form2" class="form-control" mdbActive [(ngModel)]="usuarioForm.email">
-	         <label for="form2">Your email</label>
-	     </div>
-	
-	     <div class="md-form md-form-white">
-	         <i class="fa fa-lock prefix white-text"></i>
-	         <input type="password" id="form4" class="form-control" mdbActive [(ngModel)]="usuarioForm.password">
-	         <label for="form4">Your password</label>
-	     </div>
+	     <form #signupForm="ngForm">
+		     <div class="md-form md-form-white">
+		         <i class="fa fa-user prefix white-text"></i>
+		         <input type="text" id="signupFormUsername" name="signupFormUsername" class="form-control" mdbActive 
+		         		[(ngModel)]="usuarioForm.username" 
+		         		required [minlength]="3"  #signupFormUsername="ngModel"
+		         		(keyup)="this.usuarioForm.username = this.usuarioForm.username.toLowerCase();">
+		         <label for="signupFormUsername">Your name</label>
+		         <div *ngIf="signupFormUsername.invalid && signupFormUsername.dirty && signupFormUsername.touched"
+				     class="alert alert-danger">
+					  <div *ngIf="signupFormUsername.errors.minlength">
+					    Name must be at least 3 characters long.
+					  </div>
+			 	 </div>
+		     </div>
+		     <div class="md-form md-form-white">
+		         <i class="fa fa-envelope prefix white-text"></i>
+		         <input type="text" id="form2" name="form2" class="form-control" mdbActive
+		         		[(ngModel)]="this.usuarioForm.email"
+		         		(keyup)="this.usuarioForm.email = this.usuarioForm.email.toLowerCase();"
+		         		required email>
+		         <label for="form2">Your email</label>
+		     </div>
+		
+		     <div class="md-form md-form-white">
+		         <i class="fa fa-lock prefix white-text"></i>
+		         <input type="password" id="form4" name="form4" class="form-control" mdbActive [(ngModel)]="usuarioForm.password" 
+		         	required [minlength]="6">
+		         <label for="form4">Your password</label>
+		     </div>
+		 </form>
 	
 	     <div class="text-center">
-	       <button class="btn btn-block btn-default waves-light" (click)="signup()">Sign up</button>
+	       <button class="btn btn-block btn-default waves-light" [disabled]="!signupForm.form.valid" (click)="signup()">Sign up</button>
 	       <button class="btn btn-block btn-danger waves-light" (click)="socialSignIn('google')"><i class="fa fa-google"></i>Sign in with Google</button>
 	       <button class="btn btn-block btn-indigo waves-light" (click)="socialSignIn('facebook')"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
 	       <hr class="hr-light mb-3 mt-4">
@@ -69,20 +84,25 @@
             </div>
             <!--Body-->
             <div class="modal-body">
+               <form #loginForm="ngForm">
              	 <div class="md-form">
 			         <i class="fa fa-envelope prefix"></i>
-			         <input type="text" id="formLogEmail" class="form-control" mdbActive [(ngModel)]="usuarioForm.email">
+			         <input type="text" id="formLogEmail" name="formLogEmail" class="form-control" mdbActive [(ngModel)]="this.usuarioLogin.email"
+			         		(keyup)="this.usuarioLogin.email = this.usuarioLogin.email.toLowerCase();"
+		         			required email>
 			         <label for="formLogEmail">Your email</label>
 			     </div>
 			
 			     <div class="md-form">
 			         <i class="fa fa-lock prefix"></i>
-			         <input type="password" id="formLogPass" class="form-control" mdbActive [(ngModel)]="usuarioForm.password">
+			         <input type="password" id="formLogPass" name="formLogPass" class="form-control" mdbActive [(ngModel)]="this.usuarioLogin.password" 
+			         	required [minlength]="6">
 			         <label for="formLogPass">Your password</label>
 			     </div>
-				
+			  </form>
 				<div class="text-center mt-2 error-tip">
 					<button class="btn btn-info waves-light" #popLogin="bs-mdbPopover" [mdbPopover]="this.mensajeErrorLogin" triggers=""
+						 [disabled]="!loginForm.form.valid"
                     	 mdbRippleRadius (click)="this.login();" >Log in <i class="fa fa-sign-in ml-1"></i></button>
                 </div>
 
@@ -99,3 +119,38 @@
         <!--/.Content-->
     </div>
 </div>
+
+<div id="carrusel" class="container-fluid w-100 p-0">
+  <mdb-carousel [isControls]="true" [animation]="'slide'">
+    <mdb-slide>
+    	<div class="view hm-black-slight">
+            <img class="d-block w-100" src="../assets/pexels-photo-443430.jpg" alt="First slide">
+            <div class="mask waves-light" mdbRippleRadius></div>
+        </div>
+        <div class="carousel-caption">
+            <h3 class="h3-responsive">Slight mask</h3>
+            <p>First text</p>
+        </div>
+    </mdb-slide>
+    <mdb-slide>
+    	<div class="view hm-black-slight">
+           <img class="d-block w-100" src="../assets/pexels-photo-450597.jpg" alt="Second slide">
+            <div class="mask waves-light" mdbRippleRadius></div>
+        </div>
+        <div class="carousel-caption">
+            <h3 class="h3-responsive">Slight mask</h3>
+            <p>Second text</p>
+        </div>
+    </mdb-slide>
+    <mdb-slide>
+        <div class="view hm-black-slight">
+           <img class="d-block w-100" src="../assets/road-111709_1920.jpg" alt="Third slide">
+            <div class="mask waves-light" mdbRippleRadius></div>
+        </div>
+        <div class="carousel-caption">
+            <h3 class="h3-responsive">Slight mask</h3>
+            <p>Third text</p>
+        </div>
+    </mdb-slide>
+  </mdb-carousel>
+ </div>

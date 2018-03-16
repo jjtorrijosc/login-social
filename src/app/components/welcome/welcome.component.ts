@@ -6,6 +6,7 @@ import { UsersService } from '../../services/users.service';
 import { NavbarService } from '../../services/navbar.service';
 
 import { User} from '../../model/user';
+import { Sesion } from '../../model/sesion';
 
 @Component({
   selector: 'app-welcome',
@@ -15,7 +16,9 @@ import { User} from '../../model/user';
 export class WelcomeComponent implements OnInit, OnDestroy {
   
     usuario: User;
+    sesiones: Sesion[];
     private subscrUser: Subscription;
+    
 
   constructor(
           private usersService: UsersService,
@@ -24,13 +27,18 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
       this.usuario = this.usersService.getUser();
-
+      if (this.usuario && this.usuario.userId) {
+          this.getUserSessions(this.usuario.userId);
+      } 
+          
       //dejamos un subscribe por si el usuario cambia
       this.subscrUser = this.usersService.$obUsuario.subscribe(
           (usuario: User) => {
               if (usuario != null) {
                   console.log('subscribe: '+usuario.username);
-                  this.usuario = usuario;}
+                  this.usuario = usuario;
+                  this.getUserSessions(this.usuario.userId);
+              }
           }
       );
       
@@ -48,5 +56,14 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       this.usersService.logout();
       this.router.navigate(['./login']);
   }  
+  
+  getUserSessions (userId: number) {
+      this.usersService.getSessionsUser(userId).subscribe(
+          (sesiones: Sesion[]) => {
+               this.sesiones = sesiones;
+          }
+      );
+      
+  }
   
 }

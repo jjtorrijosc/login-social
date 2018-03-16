@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, EmailValidator, NgControl } from '@angular/forms';
 import { Subscription } from "rxjs/Subscription";
 
 import { Router } from '@angular/router';
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     
     usuario: User;
     usuarioForm: User;
+    usuarioLogin: User;
     private navbarSubscrUser: Subscription;
 
     @ViewChild("formModal") public formModal;
@@ -48,6 +49,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
       this.usuarioForm = new User();
+      this.usuarioLogin = new User();
       this.usuario = this.usersService.getUser();
       this.navbarSubscrUser = this.usersService.$obUsuario.subscribe(
               (user: User) => {
@@ -110,7 +112,7 @@ export class LoginComponent implements OnInit {
   public login () {
       this.loadingService.loading();
       console.log("login normal: "+this.usuarioForm.email);
-      this.usersService.login(this.usuarioForm).subscribe(
+      this.usersService.login(this.usuarioLogin).subscribe(
           (data: User) => {
               console.log('login normal respuesta: '+data.userId);
               this.formModal.hide();

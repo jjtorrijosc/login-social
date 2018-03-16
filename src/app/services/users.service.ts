@@ -7,9 +7,11 @@ import { of } from 'rxjs/observable/of';
 import { environment } from '../../environments/environment';
 
 import { User} from '../model/user';
+import { Sesion } from '../model/sesion';
 
 const loginUrl = '/usuario/login'; // URL to web api
 const signupUrl = '/usuario/sign-up';
+const userSessionsUrl = '/usuario/sessions';
 const httpOptions = {
    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -81,8 +83,19 @@ export class UsersService {
   }
   
   getUser (): User {
-      console.log("getUser: "+this.usuario.username);
+      //console.log("getUser: "+this.usuario.username);
       return this.usuario;
+  }
+  
+  getSessionsUser (userId: number): Observable<Sesion[]>  {
+      console.log('getSessionUser: '+userId);
+      return this.http.get<Sesion[]>( environment.urlBackend +  userSessionsUrl 
+              + '?user_id='+userId
+        ).pipe(
+             tap((data: Sesion[]) => {console.log('lista sesiones');},
+              err => {console.error(err);}
+             )
+        );
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
