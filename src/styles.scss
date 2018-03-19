@@ -1,4 +1,11 @@
+.intro-2 {
+    background: url("./assets/pexels-photo-577585.jpg")no-repeat center center;
+    background-size: cover;
+}
 
+.card {
+    background-color: rgba(229, 228, 255, 0.2);
+}
 
 @mixin claseToolTip ($tip-background-color, $tip-text-color) {
 

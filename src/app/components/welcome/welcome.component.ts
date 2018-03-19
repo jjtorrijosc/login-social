@@ -42,7 +42,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
           }
       );
       
-      this.navbarService.hide();
+      //this.navbarService.hide();
   }
   
   ngOnDestroy() {

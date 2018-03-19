@@ -1,20 +1,30 @@
-<div class="container intro-2 flex-center d-flex align-items-center content-height content-width">
-     <div class="row">
-		<div class="card content-width" style="opacity: 0.9;">
-		  <div class="card-body content-width">
-			<h3 class="h3-light wow fadeInLeft">Welcome {{this.usuario.username}}</h3>
-			<h6 class="h6-light wow fadeInLeft">your email is: <a>{{this.usuario.email}}</a></h6>
-			<button class="btn btn-outline-black wow fadeInLeft waves-light" data-wow-delay="0.3s" mdbRippleRadius (click)="logout()">SIGNOUT</button>
+<section class="view intro-2 hm-gradient">
+  <div class="full-bg-img mask pattern-2">
+	<div class="container flex-center d-flex align-items-center">
+	<div class="row flex-center w-100 pt-5 mt-5">
+		<div class="col-sm-5">
+		  <div class="row white-text">
+			<h3 class="h3-responsive h3-light wow fadeInLeft">Welcome {{this.usuario.username}}</h3>
+			<h6 class="h6-responsive h6-light wow fadeInLeft">your email is: <a>{{this.usuario.email}}</a></h6>
+			<button class="btn btn-outline-white wow fadeInLeft waves-light" data-wow-delay="0.3s" mdbRippleRadius (click)="logout()">SIGNOUT</button>
 		  </div>
 		</div>
-  	</div>
-  	<div  *ngIf="this.sesiones && (this.sesiones.length>0)" class="row">
-  		<div *ngFor="let sesion of this.sesiones" class="col-sm-3 content-width"> 
-  			<div class="card content-width" style="opacity: 0.9;">
-		  		<div class="card-body content-width">
-		  			Session date: {{ sesion.acceso | date }}
-		  		</div>
+		
+		<div class="col-sm-5 card h-75 white-text" >
+			<div *ngIf="this.sesiones && (this.sesiones.length>0)" class="card-body h-100 w-100">
+				<div class="row w-100">
+			        Sessions:
+			    </div>
+			    <hr class="hr-light mb-1 mt-1">
+			    <table class="row h-75 mb-1" style="overflow: auto;">
+			  		<tr *ngFor="let sesion of this.sesiones">
+			  			{{ sesion.acceso | date:'yyyy-MM-dd HH:mm' }}
+					</tr>
+				 </table>
 		  	</div>
-		 </div>
+	  
+		</div>
   	</div>
 </div>
+</div>
+</section>

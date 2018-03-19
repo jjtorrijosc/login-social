@@ -1,7 +1,8 @@
-<div class="container flex-center">
-    <div class="d-flex align-items-center content-height">
-      <div class="row flex-center pt-5 mt-3">
-	<div class="col-md-6 text-center text-md-left mb-5">
+<section class="view intro-2 hm-gradient">
+  <div class="full-bg-img mask pattern-2">
+	<div class="container flex-center d-flex align-items-center">
+	   <div class="row flex-center w-100 pt-5 mt-5" style="height: 90%; overflow: auto;">
+	<div class="col-sm-6 text-center text-md-left">
 	  <div class="white-text">
 	      <h1 class="h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up right now! </h1>
 	      <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
@@ -11,15 +12,15 @@
 	  </div>
 	</div>
 	  
-	<div [hidden]="this.usuario && this.usuario.email" class="col-md-6 col-xl-5 offset-xl-1">
+	<div [hidden]="this.usuario && this.usuario.email" class="col-sm-6 col-xl-5 offset-xl-1">
 	  <div class="card wow fadeInRight" data-wow-delay="0.3s">
 	   <div class="card-body">
 	     <div class="text-center">
-	         <h3 class="white-text error-tip">
+	         <h4 class="h4-responsive white-text error-tip">
 	         	<i #popSignUp="bs-mdbPopover" [mdbPopover]="this.mensajeErrorSignUp" triggers="" placement="bottom" 
 	         			class="fa fa-user white-text"></i>
 	         	 Register:
-	         </h3>
+	         </h4>
 	         <hr class="hr-light">
 	     </div>
 	
@@ -56,11 +57,11 @@
 		 </form>
 	
 	     <div class="text-center">
-	       <button class="btn btn-block btn-default waves-light" [disabled]="!signupForm.form.valid" (click)="signup()">Sign up</button>
-	       <button class="btn btn-block btn-danger waves-light" (click)="socialSignIn('google')"><i class="fa fa-google"></i>Sign in with Google</button>
-	       <button class="btn btn-block btn-indigo waves-light" (click)="socialSignIn('facebook')"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
+	       <button class="btn btn-sm btn-block btn-default waves-light" [disabled]="!signupForm.form.valid" (click)="signup()">Sign up</button>
+	       <button class="btn btn-sm  btn-block btn-danger waves-light" (click)="socialSignIn('google')"><i class="fa fa-google"></i>Sign in with Google</button>
+	       <button class="btn btn-sm  btn-block btn-indigo waves-light" (click)="socialSignIn('facebook')"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
 	       <hr class="hr-light mb-3 mt-4">
-	       <button type="button" class="btn btn-block btn-default waves-light" (click)="formModal.show()" mdbRippleRadius>Login</button>
+	       <div class="white-text text-center">Already have a user? <a (click)="formModal.show()" mdbRippleRadius><span class="badge black">Login</span></a></div>
 	     </div>
 	     
 	   </div>
@@ -69,6 +70,7 @@
   </div>
   </div>
 </div>
+</section>
 
 <div mdbModal #formModal="mdb-modal" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog cascading-modal" role="document">
@@ -119,38 +121,3 @@
         <!--/.Content-->
     </div>
 </div>
-
-<div id="carrusel" class="container-fluid w-100 p-0">
-  <mdb-carousel [isControls]="true" [animation]="'slide'">
-    <mdb-slide>
-    	<div class="view hm-black-slight">
-            <img class="d-block w-100" src="../assets/pexels-photo-443430.jpg" alt="First slide">
-            <div class="mask waves-light" mdbRippleRadius></div>
-        </div>
-        <div class="carousel-caption">
-            <h3 class="h3-responsive">Slight mask</h3>
-            <p>First text</p>
-        </div>
-    </mdb-slide>
-    <mdb-slide>
-    	<div class="view hm-black-slight">
-           <img class="d-block w-100" src="../assets/pexels-photo-450597.jpg" alt="Second slide">
-            <div class="mask waves-light" mdbRippleRadius></div>
-        </div>
-        <div class="carousel-caption">
-            <h3 class="h3-responsive">Slight mask</h3>
-            <p>Second text</p>
-        </div>
-    </mdb-slide>
-    <mdb-slide>
-        <div class="view hm-black-slight">
-           <img class="d-block w-100" src="../assets/road-111709_1920.jpg" alt="Third slide">
-            <div class="mask waves-light" mdbRippleRadius></div>
-        </div>
-        <div class="carousel-caption">
-            <h3 class="h3-responsive">Slight mask</h3>
-            <p>Third text</p>
-        </div>
-    </mdb-slide>
-  </mdb-carousel>
- </div>
