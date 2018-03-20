@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
 import { Subscription } from "rxjs/Subscription";
 import { LoadingService } from './services/loading.service';
 
@@ -13,7 +14,10 @@ export class AppComponent {
     private subscrLoading: Subscription;
     private pageIsLoading: boolean;
 
-  constructor(private loadingService: LoadingService) {}
+  constructor(
+          private router: Router,
+              private loadingService: LoadingService
+          ) {}
 
   ngOnInit() {
     this.pageIsLoading = false;
@@ -29,6 +33,22 @@ export class AppComponent {
     if (this.subscrLoading) { 
         this.subscrLoading.unsubscribe();
     }
+  }
+  
+  ngAfterViewInit() {
+      this.router.events.subscribe(
+         (event) => {
+              if(event instanceof NavigationStart) {
+                  this.loadingService.loading();
+              }
+              else if (
+                  event instanceof NavigationEnd || 
+                  event instanceof NavigationCancel
+                  ) {
+                  this.loadingService.stopLoading();
+              }
+         }
+      );
   }
   
 }

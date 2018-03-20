@@ -12,7 +12,9 @@ export class LoadingService {
       this.$isLoading.next(true);
   }
   stopLoading () {
-      this.$isLoading.next(false);
+      setTimeout(() => {
+          this.$isLoading.next(false);
+      }, 1000);
   }
 
 }

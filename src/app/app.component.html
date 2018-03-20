@@ -3,46 +3,52 @@
    <router-outlet></router-outlet>
 </header>
 
-<div id="carrusel" class="container-fluid w-100 p-0">
-  <mdb-carousel [isControls]="true" [animation]="'slide'">
-    <mdb-slide>
-    	<div class="view hm-black-slight">
-            <img class="d-block w-100" src="../assets/pexels-photo-443430.jpg" alt="First slide">
-            <div class="mask waves-light" mdbRippleRadius></div>
-        </div>
-        <div class="carousel-caption">
-            <h3 class="h3-responsive">Slight mask</h3>
-            <p>First text</p>
-        </div>
-    </mdb-slide>
-    <mdb-slide>
-    	<div class="view hm-black-slight">
-           <img class="d-block w-100" src="../assets/pexels-photo-450597.jpg" alt="Second slide">
-            <div class="mask waves-light" mdbRippleRadius></div>
-        </div>
-        <div class="carousel-caption">
-            <h3 class="h3-responsive">Slight mask</h3>
-            <p>Second text</p>
-        </div>
-    </mdb-slide>
-    <mdb-slide>
-        <div class="view hm-black-slight">
-           <img class="d-block w-100" src="../assets/road-111709_1920.jpg" alt="Third slide">
-            <div class="mask waves-light" mdbRippleRadius></div>
-        </div>
-        <div class="carousel-caption">
-            <h3 class="h3-responsive">Slight mask</h3>
-            <p>Third text</p>
-        </div>
-    </mdb-slide>
-  </mdb-carousel>
- </div>
-
-
 <div *ngIf="this.pageIsLoading" class="loading h1-responsive">
 	Loading<span class="d">.</span><span class="d d-2">.</span><span class="d d-3">.</span>
 </div>
 
+<section id="carrusel" class="view teal lighten-2 w-100">
+  <div class="row flex-center content-width">
+	<div class="col-4 text-center white-text">
+		<h2 class="h2-responsive font-bold py-3 px-2">You are welcome!</h2>
+	</div>
+	
+	<div class="col-sm-8">
+	  <mdb-carousel [isControls]="true" [animation]="'slide'">
+	    <mdb-slide>
+	    	<div class="view block hm-black-slight">
+	            <img class="d-block w-100" src="../assets/pexels-photo-443430.jpg" alt="First slide">
+	            <div class="mask waves-light" mdbRippleRadius></div>
+	        </div>
+	        <div class="carousel-caption">
+	            <h3 class="h3-responsive">Slight mask</h3>
+	            <p>First text</p>
+	        </div>
+	    </mdb-slide>
+	    <mdb-slide>
+	    	<div class="view block hm-black-slight">
+	           <img class="d-block w-100" src="../assets/pexels-photo-450597.jpg" alt="Second slide">
+	            <div class="mask waves-light" mdbRippleRadius></div>
+	        </div>
+	        <div class="carousel-caption">
+	            <h3 class="h3-responsive">Slight mask</h3>
+	            <p>Second text</p>
+	        </div>
+	    </mdb-slide>
+	    <mdb-slide>
+	        <div class="view block hm-black-slight">
+	           <img class="d-block w-100" src="../assets/road-111709_1920.jpg" alt="Third slide">
+	            <div class="mask waves-light" mdbRippleRadius></div>
+	        </div>
+	        <div class="carousel-caption">
+	            <h3 class="h3-responsive">Slight mask</h3>
+	            <p>Third text</p>
+	        </div>
+	    </mdb-slide>
+	  </mdb-carousel>
+	</div>
+   </div>
+</section>
 
 <footer class="page-footer blue">
   <div class="container">

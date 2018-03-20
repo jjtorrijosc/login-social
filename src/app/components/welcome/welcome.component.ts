@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { UsersService } from '../../services/users.service';
 import { NavbarService } from '../../services/navbar.service';
+import { LoadingService } from '../../services/loading.service';
 
 import { User} from '../../model/user';
 import { Sesion } from '../../model/sesion';
@@ -23,6 +24,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   constructor(
           private usersService: UsersService,
           private navbarService: NavbarService,
+          private loadingService: LoadingService,
           private router: Router) { }
 
   ngOnInit() {
@@ -58,9 +60,15 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   }  
   
   getUserSessions (userId: number) {
+      
+      this.loadingService.loading();
       this.usersService.getSessionsUser(userId).subscribe(
           (sesiones: Sesion[]) => {
                this.sesiones = sesiones;
+               this.loadingService.stopLoading();
+          },
+          error => {
+              this.loadingService.stopLoading();
           }
       );
       
