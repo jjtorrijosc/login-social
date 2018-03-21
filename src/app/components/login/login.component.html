@@ -1,69 +1,69 @@
 <section class="view intro-2 hm-gradient">
   <div class="full-bg-img mask pattern-2">
 	<div class="container flex-center d-flex align-items-center">
-	   <div class="row flex-center w-100 pt-5 mt-5" style="height: 90%; overflow: auto;">
-	<div class="col-sm-6 text-center text-md-left">
-	  <div class="white-text">
-	      <h1 class="h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up right now! </h1>
-	      <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
-	      <h6 class="wow fadeInLeft" data-wow-delay="0.3s">You can sign up or sign in with your google or facebook account.</h6>
-	      <br>
-	      <button class="btn btn-outline-white wow fadeInLeft waves-light" data-wow-delay="0.3s" (click)="scrollToCarrusel()" mdbRippleRadius>READ MORE</button>
-	  </div>
-	</div>
-	  
-	<div [hidden]="this.usuario && this.usuario.email" class="col-sm-6 col-xl-5 offset-xl-1">
-	  <div class="card wow fadeInRight" data-wow-delay="0.3s">
-	   <div class="card-body">
-	     <div class="text-center">
-	         <h4 class="h4-responsive white-text error-tip">
-	         	<i #popSignUp="bs-mdbPopover" [mdbPopover]="this.mensajeErrorSignUp" triggers="" placement="bottom" 
-	         			class="fa fa-user white-text"></i>
-	         	 Register:
-	         </h4>
-	         <hr class="hr-light">
-	     </div>
-	
-	     <form #signupForm="ngForm">
-		     <div class="md-form md-form-white">
-		         <i class="fa fa-user prefix white-text"></i>
-		         <input type="text" id="signupFormUsername" name="signupFormUsername" class="form-control" mdbActive 
-		         		[(ngModel)]="usuarioForm.username" 
-		         		required [minlength]="3"  #signupFormUsername="ngModel"
-		         		(keyup)="this.usuarioForm.username = this.usuarioForm.username.toLowerCase();">
-		         <label for="signupFormUsername">Your name</label>
-		         <div *ngIf="signupFormUsername.invalid && signupFormUsername.dirty && signupFormUsername.touched"
-				     class="alert alert-danger">
-					  <div *ngIf="signupFormUsername.errors.minlength">
-					    Name must be at least 3 characters long.
-					  </div>
-			 	 </div>
-		     </div>
-		     <div class="md-form md-form-white">
-		         <i class="fa fa-envelope prefix white-text"></i>
-		         <input type="text" id="form2" name="form2" class="form-control" mdbActive
-		         		[(ngModel)]="this.usuarioForm.email"
-		         		(keyup)="this.usuarioForm.email = this.usuarioForm.email.toLowerCase();"
-		         		required email>
-		         <label for="form2">Your email</label>
+	 <div class="row flex-center w-100 pt-5 mt-5" style="height: 90%; overflow: auto;">
+		<div class="col-sm-6 text-center text-md-left wow fadeInLeft" data-wow-delay="0.3s">
+		  <div class="white-text">
+		      <h1 class="h1-responsive font-bold">Sign up right now! </h1>
+		      <hr class="hr-light wow fadeInLeft">
+		      <h6 class="wow fadeInLeft">You can sign up or sign in with your google or facebook account.</h6>
+		      <br>
+		      <button class="btn btn-outline-white waves-light" (click)="scrollToCarrusel()" mdbRippleRadius>READ MORE</button>
+		  </div>
+		</div>
+		  
+		<div [hidden]="this.usuario && this.usuario.email" class="col-sm-6 col-xl-5 offset-xl-1 wow fadeInRight" data-wow-delay="0.3s">
+		  <div class="card">
+		   <div class="card-body">
+		     <div class="text-center">
+		         <h4 class="h4-responsive white-text error-tip">
+		         	<i #popSignUp="bs-mdbPopover" [mdbPopover]="this.mensajeErrorSignUp" triggers="" placement="bottom" 
+		         			class="fa fa-user white-text"></i>
+		         	 Register:
+		         </h4>
+		         <hr class="hr-light">
 		     </div>
 		
-		     <div class="md-form md-form-white">
-		         <i class="fa fa-lock prefix white-text"></i>
-		         <input type="password" id="form4" name="form4" class="form-control" mdbActive [(ngModel)]="usuarioForm.password" 
-		         	required [minlength]="6">
-		         <label for="form4">Your password</label>
+		     <form #signupForm="ngForm">
+			     <div class="md-form md-form-white">
+			         <i class="fa fa-user prefix white-text"></i>
+			         <input type="text" id="signupFormUsername" name="signupFormUsername" class="form-control" mdbActive 
+			         		[(ngModel)]="usuarioForm.username" 
+			         		required [minlength]="3"  #signupFormUsername="ngModel"
+			         		(keyup)="this.usuarioForm.username = this.usuarioForm.username.toLowerCase();">
+			         <label for="signupFormUsername">Your name</label>
+			         <div *ngIf="signupFormUsername.invalid && signupFormUsername.dirty && signupFormUsername.touched"
+					     class="alert alert-danger">
+						  <div *ngIf="signupFormUsername.errors.minlength">
+						    Name must be at least 3 characters long.
+						  </div>
+				 	 </div>
+			     </div>
+			     <div class="md-form md-form-white">
+			         <i class="fa fa-envelope prefix white-text"></i>
+			         <input type="text" id="form2" name="form2" class="form-control" mdbActive
+			         		[(ngModel)]="this.usuarioForm.email"
+			         		(keyup)="this.usuarioForm.email = this.usuarioForm.email.toLowerCase();"
+			         		required email>
+			         <label for="form2">Your email</label>
+			     </div>
+			
+			     <div class="md-form md-form-white">
+			         <i class="fa fa-lock prefix white-text"></i>
+			         <input type="password" id="form4" name="form4" class="form-control" mdbActive [(ngModel)]="usuarioForm.password" 
+			         	required [minlength]="6">
+			         <label for="form4">Your password</label>
+			     </div>
+			 </form>
+		
+		     <div class="text-center">
+		       <button class="btn btn-sm btn-block btn-default waves-light" [disabled]="!signupForm.form.valid" (click)="signup()">Sign up</button>
+		       <button class="btn btn-sm  btn-block btn-danger waves-light" (click)="socialSignIn('google')"><i class="fa fa-google"></i>Sign in with Google</button>
+		       <button class="btn btn-sm  btn-block btn-indigo waves-light" (click)="socialSignIn('facebook')"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
+		       <hr class="hr-light mb-3 mt-4">
+		       <div class="white-text text-center">Already have a user? <a (click)="formModal.show()" mdbRippleRadius><span class="badge black">Login</span></a></div>
 		     </div>
-		 </form>
-	
-	     <div class="text-center">
-	       <button class="btn btn-sm btn-block btn-default waves-light" [disabled]="!signupForm.form.valid" (click)="signup()">Sign up</button>
-	       <button class="btn btn-sm  btn-block btn-danger waves-light" (click)="socialSignIn('google')"><i class="fa fa-google"></i>Sign in with Google</button>
-	       <button class="btn btn-sm  btn-block btn-indigo waves-light" (click)="socialSignIn('facebook')"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
-	       <hr class="hr-light mb-3 mt-4">
-	       <div class="white-text text-center">Already have a user? <a (click)="formModal.show()" mdbRippleRadius><span class="badge black">Login</span></a></div>
-	     </div>
-	     
+		     
 	   </div>
 	  </div>
 	</div>
